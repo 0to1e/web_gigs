@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      .main {
+        background-color: brown;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .name {
+        font-size: 5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <p class="name">Rohan</p>
+      <p class="name">Chaulagain</p>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"
+      integrity="sha512-aNMyYYxdIxIaot0Y1/PLuEu3eipGCmsEUBrUq+7aVyPGMFH8z0eTP0tkqAvv34fzN6z+201d3T8HPb1svWSKHQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      let texts = document.querySelectorAll(".name");
+      Array.from(texts).forEach(function (text) {
+        text.innerHTML = text.innerHTML
+          .split("")
+          .map(function (char) {
+            return `<span>${char}</span>`;
+          })
+          .join("");
+      });
+
+      let timeline = anime.timeline();
+      timeline.add({
+        targets: "text span",
+        translateY: 50,
+        delay: function (element, i) {
+          return i * 50;
+        },
+      });
+    </script>
+  </body>
+</html>
